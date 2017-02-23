@@ -1,0 +1,20 @@
+<h1>Pokemons#index</h1>
+
+<div class="container">
+  <div class="row">
+    <% @pokemons.each do |pokemon| %>
+      <div class="col-xs-12 col-sm-4">
+        <h2><%= pokemon.name %></h2>
+        <p>Taille: <%= pokemon.height %> m | Poids: <%= pokemon.weight %> kg</p>
+
+        <%= link_to "Afficher", pokemon_path(pokemon), class: "btn btn-primary btn-xs" %>
+        <%= link_to "Modifier", edit_pokemon_path(pokemon), class: "btn btn-warning btn-xs" %>
+        <%= link_to "Supprimer", pokemon_path(pokemon), class: "btn btn-danger btn-xs",
+            method: :delete,
+            data: { confirm: "Are you sure?" } %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+

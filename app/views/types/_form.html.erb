@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4">
+      <!-- insert <div class="card"> -->
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <%= simple_form_for @type do |f| %>
+        <%= f.input :name %>
+        <%= f.input :weakness %>
+        <%= f.button :submit, class: "btn btn-primary"%>
+      <% end %>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <!-- insert <div class="card"> -->
+    </div>
+  </div>
+</div>

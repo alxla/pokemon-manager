@@ -2,23 +2,23 @@ class TypesController < ApplicationController
 before_action :find_type, only: [:show, :edit, :destroy, :update]
 
   def show
-    @types = Type.all
   end
 
   def index
+    @types = Type.all
   end
 
   def new
-    @pokemon = Pokemon.find(params[:pokemon_id])
+    @pokemons = Pokemon.all
+    @types = Type.all
     @type = Type.new
   end
 
   def create
     @type = Type.new(type_params)
     # we need `restaurant_id` to asssociate review with corresponding restaurant
-    @type.pokemon = Type.find(params[:pokemon_id])
     if @type.save
-      redirect_to pokemon_path(@type.pokemon) # Show
+      redirect_to type_path(@type) # Show
     else
       render :new
     end
@@ -26,11 +26,12 @@ before_action :find_type, only: [:show, :edit, :destroy, :update]
 
 
   def edit
+    @types = Type.all
   end
 
   def update
     if @type.update(type_params)
-      redirect_to pokemon_path(@type.pokemon) # Show
+      redirect_to type_path(@type) # Show
     else
       render :edit
     end
@@ -38,7 +39,7 @@ before_action :find_type, only: [:show, :edit, :destroy, :update]
 
   def destroy
     @type.destroy
-    redirect_to pokemon_path(@type.pokemon)
+    redirect_to types_path
   end
 
   private

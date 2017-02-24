@@ -1,6 +1,7 @@
 <% content_for(:title_tag) do %>
   <%= @pokemon.name %>
 <% end %>
+<h1>Pokemon</h1>
 
 <div class="container">
   <div class="row">
@@ -8,9 +9,11 @@
       <!-- insert <div class="card"> -->
     </div>
     <div class="col-xs-12 col-sm-4">
-      <h1>Pokemons#show</h1>
       <h2><%= @pokemon.name %></h2>
       <p>height: <%= @pokemon.height %> cm, weight: <%= @pokemon.weight %> m</p>
+      <%= @pokemon.types.each do |type| %>
+        <%= type.name %>
+      <% end %>
       <%= link_to "Retour au Pokédex", pokemons_path, class: "btn btn-primary" %>
     </div>
     <div class="col-xs-12 col-sm-4">

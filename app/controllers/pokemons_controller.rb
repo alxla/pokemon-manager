@@ -10,6 +10,7 @@ class PokemonsController < ApplicationController
   end
 
   def new
+    @types = Type.all
     @pokemon = Pokemon.new
   end
 
@@ -24,6 +25,7 @@ class PokemonsController < ApplicationController
   end
 
   def update
+    @types = Type.all
     @pokemon.update(pokemon_params)
     redirect_to pokemon_path(@pokemon) # Show
   end
@@ -43,6 +45,6 @@ class PokemonsController < ApplicationController
     # *Strong params*: You need to *whitelist* what
     # can be updated by the user
     # Never trust user data!
-    params.require(:pokemon).permit(:name, :height, :weight)
+    params.require(:pokemon).permit(:name, :height, :weight, :types)
   end
 end

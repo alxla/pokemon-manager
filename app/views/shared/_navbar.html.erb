@@ -1,8 +1,12 @@
-<div class="navbar-wagon navbar-wagon-fixed">
+<div class="navbar-wagon">
   <!-- Logo -->
   <a href="/" class="navbar-wagon-brand">
     <h1>Mon Pockédex</h1>
   </a>
+
+    <div><%= link_to "Pokemons", pokemons_path, {class: "btn btn-primary btn-sm"} %>
+    <%= link_to "Types", types_path, {class: "btn btn-primary btn-sm"} %>
+    <%= link_to "Attaques", attacks_path, {class: "btn btn-primary btn-sm"} %></div>
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">

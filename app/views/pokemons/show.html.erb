@@ -1,26 +1,43 @@
 <% content_for(:title_tag) do %>
   <%= @pokemon.name %>
 <% end %>
-<h1>Pokemon</h1>
-
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-sm-4">
-      <!-- insert <div class="card"> -->
-    </div>
-    <div class="col-xs-12 col-sm-4">
-      <h2><%= @pokemon.name %></h2>
-      <p>height: <%= @pokemon.height %> cm, weight: <%= @pokemon.weight %> m</p>
-      <%= @pokemon.types.each do |type| %>
-        <%= type.name %>
-      <% end %>
+      <div class="col-xs-2">
+      </div>
+      <div class="col-xs-8">
+        <div class="big_card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path @pokemon.bgpic_url %>')">
+          <div class="card-category">
+            <%= @pokemon.name %>
+          </div>
+          <div class="card-description">
+            <p>Taille: <%= @pokemon.height %> m</p>
+            <p>Poids: <%= @pokemon.weight %> kg</p>
+          </div>
+          <div class="big_badge-container">
+
+            <% @pokemon.types.each do |type| %>
+              <%= link_to type_path(type) do %>
+                <div class="badge badge-bordered" style="background-image: url('<%= cl_image_path type.pic_url %>')">
+                </div>
+              <% end %>
+            <% end %>
+
+          </div>
+        </div>
       <%= link_to "Retour au Pokédex", pokemons_path, class: "btn btn-primary" %>
-    </div>
-    <div class="col-xs-12 col-sm-4">
-      <!-- insert <div class="card"> -->
-    </div>
+      </div>
+      <div class="col-xs-2">
+      </div>
   </div>
 </div>
+
+
+
+
+
+
+
 
 
 

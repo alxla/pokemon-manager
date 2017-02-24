@@ -1,6 +1,7 @@
 class Type < ApplicationRecord
-  has_many :pokemons
-  has_many :attacks
+  mount_uploader :pic, PhotoUploader
+
+  has_and_belongs_to_many :pokemons
 
   validates :name, uniqueness: true, presence: true
 

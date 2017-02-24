@@ -1,21 +1,29 @@
-<h1>Type</h1>
 <% content_for(:title_tag) do %>
   <%= @type.name %>
 <% end %>
-
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-sm-4">
-      <!-- insert <div class="card"> -->
-    </div>
-    <div class="col-xs-12 col-sm-4">
-      <h2><%= @type.name %></h2>
-      <p>pokemon link: <%= @type.pokemons %></p>
+      <div class="col-xs-2">
+      </div>
+      <div class="col-xs-8">
+        <div class="big_card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path @type.pic_url %>')">
+          <div class="card-category">
+            <%= @type.name %>
+          </div>
+          <div class="big_badge-container">
 
+            <% @type.pokemons.each do |pokemon| %>
+              <%= link_to pokemon_path(pokemon) do %>
+                <div class="badge badge-bordered" style="background-image: url('<%= cl_image_path pokemon.bgpic_url %>')">
+                </div>
+              <% end %>
+            <% end %>
+
+          </div>
+        </div>
       <%= link_to "Retour au Pokédex", pokemons_path, class: "btn btn-primary" %>
-    </div>
-    <div class="col-xs-12 col-sm-4">
-      <!-- insert <div class="card"> -->
-    </div>
+      </div>
+      <div class="col-xs-2">
+      </div>
   </div>
 </div>

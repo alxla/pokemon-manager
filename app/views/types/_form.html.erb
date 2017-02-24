@@ -6,7 +6,8 @@
     <div class="col-xs-12 col-sm-4">
       <%= simple_form_for @type do |f| %>
         <%= f.input :name %>
-        <%= f.input :pokemon, as: :check_boxes, collection: @pokemons.all %>
+          <%= f.input :pic %>
+          <%= f.input :pic_cache, as: :hidden %>
         <%= f.button :submit, class: "btn btn-primary"%>
       <% end %>
     </div>

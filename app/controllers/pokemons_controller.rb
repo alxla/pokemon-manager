@@ -45,6 +45,6 @@ class PokemonsController < ApplicationController
     # *Strong params*: You need to *whitelist* what
     # can be updated by the user
     # Never trust user data!
-    params.require(:pokemon).permit(:name, :height, :weight, :types)
+    params.require(:pokemon).permit(:name, :height, :weight, :types, :bgpic, :bgpic_cache)
   end
 end

@@ -1,18 +1,36 @@
-<h1>Pokemons</h1>
-
 <div class="container">
   <div class="row">
-    <% @pokemons.each do |pokemon| %>
-      <div class="col-xs-12 col-sm-4">
-        <h2><%= pokemon.name %></h2>
-        <p>Taille: <%= pokemon.height %> m | Poids: <%= pokemon.weight %> kg</p>
 
-        <%= link_to "Afficher", pokemon_path(pokemon), class: "btn btn-primary btn-xs" %>
-        <%= link_to "Modifier", edit_pokemon_path(pokemon), class: "btn btn-warning btn-xs" %>
-        <%= link_to "Supprimer", pokemon_path(pokemon), class: "btn btn-danger btn-xs",
-            method: :delete,
-            data: { confirm: "Are you sure?" } %>
-      </div>
+    <% @pokemons.shuffle.each do |pokemon| %>
+      <%= link_to pokemon_path(pokemon) do %>
+        <div class="col-xs-12 col-sm-4">
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path pokemon.bgpic_url %>')">
+            <div class="card-category">
+              <%= pokemon.name %>
+            </div>
+            <div class="card-description">
+              <p>Taille: <%= pokemon.height %> m</p>
+              <p>Poids: <%= pokemon.weight %> kg</p>
+            </div>
+            <div class="badge-container">
+
+              <% pokemon.types.each do |type| %>
+                <%= link_to type_path(type) do %>
+                  <div class="badge badge-bordered" style="background-image: url('<%= cl_image_path type.pic_url %>')">
+                  </div>
+                <% end %>
+              <% end %>
+
+            </div>
+            <div class="card-buttons">
+            <%= link_to "Modifier", edit_pokemon_path(pokemon), class: "btn btn-warning btn-xs" %>
+            <%= link_to "Supprimer", pokemon_path(pokemon), class: "btn btn-danger btn-xs",
+                method: :delete,
+                data: { confirm: "Are you sure?" } %>
+            </div>
+          </div>
+        </div>
+      <% end %>
     <% end %>
   </div>
 </div>

@@ -1,18 +1,32 @@
-<h1>Types</h1>
-
 <div class="container">
   <div class="row">
-    <% @types.each do |type| %>
-      <div class="col-xs-12 col-sm-4">
-        <h2><%= type.name %></h2>
-        <p>Faiblesses: <%= type.weakness %></p>
+    <% @types.shuffle.each do |type| %>
+      <%= link_to type_path(type) do %>
+        <div class="col-xs-12 col-sm-4">
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path type.pic_url %>')">
+            <div class="card-category">
+              <%= type.name %>
+            </div>
+            <div class="badge-container">
 
-        <%= link_to "Afficher", type_path(type), class: "btn btn-primary btn-xs" %>
-        <%= link_to "Modifier", edit_type_path(type), class: "btn btn-warning btn-xs" %>
-        <%= link_to "Supprimer", type_path(type), class: "btn btn-danger btn-xs",
-            method: :delete,
-            data: { confirm: "Are you sure?" } %>
-      </div>
+              <% type.pokemons.each do |pokemon| %>
+                <%= link_to pokemon_path(pokemon) do %>
+                  <div class="badge badge-bordered" style="background-image: url('<%= cl_image_path pokemon.bgpic_url %>')">
+                  </div>
+                <% end %>
+              <% end %>
+
+            </div>
+            <div class="card-buttons">
+            <%= link_to "Modifier", edit_type_path(type), class: "btn btn-warning btn-xs" %>
+            <%= link_to "Supprimer", type_path(type), class: "btn btn-danger btn-xs",
+                method: :delete,
+                data: { confirm: "Are you sure?" } %>
+            </div>
+          </div>
+        </div>
+      <% end %>
     <% end %>
+
   </div>
 </div>

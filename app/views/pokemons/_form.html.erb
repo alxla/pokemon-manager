@@ -10,7 +10,8 @@
         <%= f.input :name %>
         <%= f.input :height %>
         <%= f.input :weight %>
-        <%= f.input :type , as: :check_boxes, collection: @types.all %>
+        <%= f.input :bgpic %>
+        <%= f.input :bgpic_cache, as: :hidden %>
         <%= f.button :submit, class: "btn btn-primary"%>
       <% end %>
     </div>

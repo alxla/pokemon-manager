@@ -52,7 +52,7 @@ before_action :find_type, only: [:show, :edit, :destroy, :update]
     # *Strong params*: You need to *whitelist* what
     # can be updated by the user
     # Never trust user data!
-    params.require(:type).permit(:name, :weakness)
+    params.require(:type).permit(:name, :weakness, :pic, :pic_cache)
   end
 
 end

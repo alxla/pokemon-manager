@@ -13,14 +13,13 @@
               <p>Poids: <%= pokemon.weight %> kg</p>
             </div>
             <div class="badge-container">
-
-              <% pokemon.types.each do |type| %>
-                <%= link_to type_path(type) do %>
-                  <div class="badge badge-bordered" style="background-image: url('<%= cl_image_path type.pic_url %>')">
-                  </div>
+              <div class="badge badge-bordered">
+                <% pokemon.types.each do |type| %>
+                  <%= link_to type_path(type) do %>
+                    <%= cl_image_tag type.pic_url, :width=>30, :crop=>"fill" %>
+                  <% end %>
                 <% end %>
-              <% end %>
-
+              </div>
             </div>
             <div class="card-buttons">
             <%= link_to "Modifier", edit_pokemon_path(pokemon), class: "btn btn-warning btn-xs" %>

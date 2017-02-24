@@ -11,14 +11,13 @@
             <%= @type.name %>
           </div>
           <div class="big_badge-container">
-
-            <% @type.pokemons.each do |pokemon| %>
-              <%= link_to pokemon_path(pokemon) do %>
-                <div class="badge badge-bordered" style="background-image: url('<%= cl_image_path pokemon.bgpic_url %>')">
-                </div>
+            <div class="badge badge-bordered">
+              <% @type.pokemons.each do |pokemon| %>
+                <%= link_to pokemon_path(pokemon) do %>
+                  <%= cl_image_tag pokemon.bgpic_url, :width=>60, :crop=>"fill" %>
+                <% end %>
               <% end %>
-            <% end %>
-
+            </div>
           </div>
         </div>
       <%= link_to "Retour au Pokédex", pokemons_path, class: "btn btn-primary" %>

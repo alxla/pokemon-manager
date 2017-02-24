@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row">
-    <% @types.shuffle.each do |type| %>
+
+    <% @types.each do |type| %>
       <%= link_to type_path(type) do %>
         <div class="col-xs-12 col-sm-4">
           <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path type.pic_url %>')">
@@ -9,14 +10,30 @@
             </div>
             <div class="badge-container">
 
-              <% type.pokemons.each do |pokemon| %>
+<!--          <% type.pokemons.each do |pokemon| %>
                 <%= link_to pokemon_path(pokemon) do %>
                   <div class="badge badge-bordered" style="background-image: url('<%= cl_image_path pokemon.bgpic_url %>')">
                   </div>
                 <% end %>
               <% end %>
 
+ -->
+
+            <div class="badge-container">
+              <div class="badge badge-bordered">
+                <% type.pokemons.each do |pokemon| %>
+                  <%= link_to pokemon_path(pokemon) do %>
+                    <%= cl_image_tag pokemon.bgpic_url, :width=>30, :crop=>"fill" %>
+                  <% end %>
+                <% end %>
+              </div>
             </div>
+            </div>
+
+
+
+
+
             <div class="card-buttons">
             <%= link_to "Modifier", edit_type_path(type), class: "btn btn-warning btn-xs" %>
             <%= link_to "Supprimer", type_path(type), class: "btn btn-danger btn-xs",
